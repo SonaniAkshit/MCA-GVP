@@ -51,85 +51,64 @@ void push(int s[],int *top)
 	int ele;
 	if(*top == SIZE-1)
 		printf("\nStack Overflow!\n");
-	else
-	{
-		printf("\nEnter Any Value:");
+	else{
+		printf("\nEnter Any Value: ");
 		scanf("%d",&ele);
 		*top +=1;
 		s[*top]=ele;
-	}
-	
+	}	
 }
 void pop(int s[],int *top)
 {
 	if(*top == -1)
-	{
 		printf("\nStack Underflow!\n");
-	}
-	else
-	{
-		printf("\n%d is Popped...\n",s[*top]);
-		*top -=1;
-	}
+	else{
+		printf("\n%d is Popped..\n",s[*top]);
+		*top-=1;
+	}	
 }
 void peek(int s[],int *top)
 {
 	if(*top == -1)
-	{
 		printf("\nStack Underflow!\n");
-	}
-	else
-	{
-		printf("\nTop Element is %d\n",s[*top]);
-	}
+	else{
+		printf("\nTop Element: %d\n",s[*top]);
+	}	
 }
 void display(int s[],int *top)
 {
 	int i;
-	if(*top == -1)
-	{
+	if(*top == -1)	
 		printf("\nStack Underflow!\n");
-	}
-	else
-	{
-		printf("\n-----STACK-----\n");
-		for(i=*top;i>=0;i--)
-		{
+	else{
+		printf("\n------STACK------\n");
+		for(i=*top;i>=0;i--){
 			printf("[%d]",s[i]);
 		}
-		printf("\n---------------\n");
+		printf("\n-----------------\n");
 	}
 }
 void modify(int s[],int *top)
 {
 	int oldele,newele,i,found=0;
-	
 	if(*top == -1)
-	{
 		printf("\nStack Underflow!\n");
-	}
-	else
-	{
-		printf("\nEnter the old value you want to modify:");
+	else{
+		printf("Enter old Vlaue you want to change: ");
 		scanf("%d",&oldele);
-		
 		for(i=0;i<=*top;i++)
 		{
 			if(s[i]==oldele)
 			{
 				found = 1;
-				printf("\nEnter New Value:");
+				printf("\nEnter New Vlaue you wnat to modify: ");
 				scanf("%d",&newele);
 				s[i]=newele;
-				printf("\nValue %d at position %d modified to %d.\n",oldele,i,newele);
+				printf("\nvalue %d at position of %d is modify by %d\n",oldele,i,newele);
 				break;
 			}
 		}
-		
 		if(!found)
-		{
-			printf("\nValue %d not found in stack\n",oldele);
-		}
-		
+			printf("\nValue Not Found!\n");
 	}
 }
