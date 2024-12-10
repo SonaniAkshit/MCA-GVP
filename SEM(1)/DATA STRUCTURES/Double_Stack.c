@@ -1,3 +1,5 @@
+/*Write menu driven program to Implement Double stack 1) Push 2) pop 3) peep 4) modify  5) display*/
+
 #include<stdio.h>
 #include<conio.h>
 #define SIZE 5
