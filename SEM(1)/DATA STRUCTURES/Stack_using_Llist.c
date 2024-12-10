@@ -1,3 +1,5 @@
+/*Write Menu driven program to implement operations of stack using linked-list 1) Push 2) pop 3) peep 4) modify  5) display*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
