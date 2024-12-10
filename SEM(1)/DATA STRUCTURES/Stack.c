@@ -1,3 +1,5 @@
+/*Write Menu driven program to implement operations of stack 1) Push 2) pop 3) peek 4) modify  5) display*/
+
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
