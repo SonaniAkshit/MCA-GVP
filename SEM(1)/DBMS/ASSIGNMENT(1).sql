@@ -18,6 +18,7 @@ CREATE table p( pno char(3) primary key, pname varchar(20), color varchar(10), w
 	insert into p values('p6','Cg','Red',19.0,'London');
 	
 CREATE table sp( sno char(30), pno char(3), qty int,PRIMARY key(sno,pno),FOREIGN KEY(sno) REFERENCES s(sno) ,FOREIGN KEY(pno) REFERENCES p(pno));
+
 ALTER TABLE `mca2024akshit`.`sp` DROP INDEX `pno`, ADD INDEX `pno` (`pno`, `sno`) USING BTREE;
 	insert into sp values('s1','p1',300);
 	insert into sp values('s1','p2',200);
@@ -66,25 +67,15 @@ drop table temp;
 *QUE-5*
 =======
 CREATE TABLE dept(dept_id int Primary key, dept_name varchar(30), dept_location VARCHAR(50));
-INSERT INTO dept VALUES(1,'Computer','Ahemedabad');
-INSERT INTO dept VALUES(2,'Micro Biology','Sadra');
-INSERT INTO dept VALUES(3,'Management','Randheja');
-INSERT INTO dept VALUES(4,'Main Office','Ahemedabad');
+INSERT INTO dept VALUES(1,'Computer','Ahemedabad'),(2,'Micro Biology','Sadra'),(3,'Management','Randheja'),
+						(4,'Main Office','Ahemedabad');
 
 CREATE TABLE emp(emp_id int Primary key, emp_name varchar(30),emp_dept_id int,emp_boss_id int,emp_salary int,FOREIGN KEY(emp_dept_id) REFERENCES dept(dept_id));
-INSERT INTO emp VALUES(101,'Nikhil',1,101,200000);
-INSERT INTO emp VALUES(102,'Satish',1,101,2100000);
-INSERT INTO emp VALUES(103,'Vrushali',1,101,175000);
-INSERT INTO emp VALUES(201,'Archna',2,201,200000);
-INSERT INTO emp VALUES(202,'Tanvi',2,201,135000);
-INSERT INTO emp VALUES(203,'Dharti',2,201,175000);
-INSERT INTO emp VALUES(301,'Hemali',3,301,235000);
-INSERT INTO emp VALUES(302,'Vishal',3,301,180000);
-INSERT INTO emp VALUES(303,'Nafis',3,302,199000);
-INSERT INTO emp VALUES(401,'Namrata',4,401,500000);
-INSERT INTO emp VALUES(402,'Bipin',4,401,450000);
-INSERT INTO emp VALUES(403,'Narendra',4,402,1000000);
-INSERT INTO emp VALUES(404,'Mohan',4,402,800000);
+INSERT INTO emp VALUES(101,'Nikhil',1,101,200000),(102,'Satish',1,101,2100000),(103,'Vrushali',1,101,175000),
+					(201,'Archna',2,201,200000),(202,'Tanvi',2,201,135000),(203,'Dharti',2,201,175000),
+					(301,'Hemali',3,301,235000),(302,'Vishal',3,301,180000),(303,'Nafis',3,302,199000),
+					(401,'Namrata',4,401,500000,(402,'Bipin',4,401,450000),(403,'Narendra',4,402,1000000),
+					(404,'Mohan',4,402,800000);
 
 *QUE-6*
 =======
@@ -147,7 +138,7 @@ CREATE OR REPLACE TRIGGER ins_transaction before INSERT on account
 	@withdrawals = @withdrawals + if(new.amount<0,-new.amount,0);
 set @sum = 0;
 set @deposits = 0;
-set @withdrawals = 0;
+set @withdrawals = -0;
 
 INSERT INTO account values(204,1000.00),(205,-90.00),(206,-100.00);
 select @deposits as 'Deposit amt', @withdrawals as 'Withdrawal amt', @sum as 'Balance amt';
